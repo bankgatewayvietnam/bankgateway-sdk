@@ -43,13 +43,12 @@ curl --location 'https://api.bankgateway.pro/api/v1/lookup' \
     "bin": "970422",
     "account_number": "00141103001"
   }'
+```
 
-
-
-
-2. Node.js / TypeScript
-typescript
+### 2. Node.js / TypeScript
+```typescript
 import axios from 'axios';
+
 async function lookupAccount(bin: string, accountNumber: string) {
   try {
     const response = await axios.post(
@@ -68,11 +67,15 @@ async function lookupAccount(bin: string, accountNumber: string) {
     console.error('Lỗi tra cứu:', error.response?.data || error.message);
   }
 }
+
 // Tra cứu mẫu MBBank
 lookupAccount('970422', '00141103001').then(console.log);
-3. Python
-python
+```
+
+### 3. Python
+```python
 import requests
+
 url = "https://api.bankgateway.pro/api/v1/lookup"
 headers = {
     "x-api-key": "YOUR_API_KEY",
@@ -82,12 +85,17 @@ payload = {
     "bin": "970422",
     "account_number": "00141103001"
 }
+
 response = requests.post(url, json=payload, headers=headers, timeout=5)
 print(response.json())
-4. PHP
-php
+```
+
+### 4. PHP
+```php
 <?php
+
 $curl = curl_init();
+
 curl_setopt_array($curl, [
   CURLOPT_URL => 'https://api.bankgateway.pro/api/v1/lookup',
   CURLOPT_RETURNTRANSFER => true,
@@ -102,30 +110,44 @@ curl_setopt_array($curl, [
   ],
   CURLOPT_TIMEOUT => 5,
 ]);
+
 $response = curl_exec($curl);
 curl_close($curl);
-echo $response;
-📋 Danh Sách Mã BIN Ngân Hàng Tiêu Biểu
-Ngân Hàng	Tên Viết Tắt	Mã BIN Napas	Trạng Thái 24/7
-MBBank	MB	970422	Hoạt động
-Vietcombank	VCB	970436	Hoạt động
-Techcombank	TCB	970407	Hoạt động
-BIDV	BIDV	970418	Hoạt động
-VietinBank	CTG	970415	Hoạt động
-ACB	ACB	970416	Hoạt động
-VPBank	VPB	970454	Hoạt động
-TPBank	TPB	970423	Hoạt động
-Sacombank	STB	970403	Hoạt động
-MoMo	MOMO	971005	Hoạt động
-ZaloPay	ZALOPAY	971011	Hoạt động
-(Xem toàn bộ 60+ ngân hàng tại: https://bankgateway.pro/api-docs)
 
-💼 Kịch Bản Ứng Dụng (Use Cases)
-Website TMĐT, Nạp Thẻ: Kiểm tra họ tên thụ hưởng ngay khi khách nhập STK, tránh 100% rủi ro chuyển nhầm.
-Hệ Thống Payout / Rút Tiền: Tự động đối soát tên người nhận trước khi lệnh chi tiền được duyệt.
-Phần Mềm Kế Toán & ERP: Tự động hóa danh bạ thanh toán hóa đơn đối tác.
-📞 Hỗ Trợ Kỹ Thuật
-Website: https://bankgateway.pro
-Tài liệu API: https://bankgateway.pro/api-docs
-Telegram CSKH: @bankgatewaypro
-Bot Nhận 50 Reqs: @bankgateway_bot
+echo $response;
+```
+
+---
+
+## 📋 Danh Sách Mã BIN Ngân Hàng Tiêu Biểu
+
+| Ngân Hàng | Tên Viết Tắt | Mã BIN Napas | Trạng Thái 24/7 |
+| :--- | :--- | :---: | :---: |
+| **MBBank** | MB | `970422` | Hoạt động |
+| **Vietcombank** | VCB | `970436` | Hoạt động |
+| **Techcombank** | TCB | `970407` | Hoạt động |
+| **BIDV** | BIDV | `970418` | Hoạt động |
+| **VietinBank** | CTG | `970415` | Hoạt động |
+| **ACB** | ACB | `970416` | Hoạt động |
+| **VPBank** | VPB | `970454` | Hoạt động |
+| **TPBank** | TPB | `970423` | Hoạt động |
+| **Sacombank** | STB | `970403` | Hoạt động |
+| **MoMo** | MOMO | `971005` | Hoạt động |
+| **ZaloPay** | ZALOPAY | `971011` | Hoạt động |
+
+*(Xem toàn bộ 60+ ngân hàng tại: [https://bankgateway.pro/api-docs](https://bankgateway.pro/api-docs))*
+
+---
+
+## 💼 Kịch Bản Ứng Dụng (Use Cases)
+* **Website TMĐT, Nạp Thẻ:** Kiểm tra họ tên thụ hưởng ngay khi khách nhập STK, tránh 100% rủi ro chuyển nhầm.
+* **Hệ Thống Payout / Rút Tiền:** Tự động đối soát tên người nhận trước khi lệnh chi tiền được duyệt.
+* **Phần Mềm Kế Toán & ERP:** Tự động hóa danh bạ thanh toán hóa đơn đối tác.
+
+---
+
+## 📞 Hỗ Trợ Kỹ Thuật
+* **Website:** [https://bankgateway.pro](https://bankgateway.pro)
+* **Tài liệu API:** [https://bankgateway.pro/api-docs](https://bankgateway.pro/api-docs)
+* **Telegram CSKH:** [@bankgatewaypro](https://t.me/bankgatewaypro)
+* **Bot Nhận 50 Reqs:** [@bankgateway_bot](https://t.me/bankgateway_bot)
